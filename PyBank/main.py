@@ -33,12 +33,15 @@ with open(budget_csv) as budget_file:
             delta_lines.append(change)
             monthly_change[month] = change
         past_profit = profit
+
+#Calculate average change, greatest increase/decrease in profit
 avg_change = sum(delta_lines)/len(delta_lines) 
 max_increase = max(delta_lines) 
 max_loss = min(delta_lines) 
 month_max_increase = [key for key, value in monthly_change.items() if value == max_increase][0] #to show just the key in the dictiorary associated with highest value
 month_max_loss = [key for key, value in monthly_change.items() if value == max_loss][0]
 
+#print results to terminal window
 print("Financial Analysis")
 print('___________________________________')
 print(f'Total months: {total_months}')
@@ -47,7 +50,7 @@ print(f"Average Change: ${avg_change:.2f}") ##.2f for decimals
 print(f"Greatest increase in profits: {month_max_increase} (${max_increase})") 
 print(f"Greatest Decrease in profits: {month_max_loss} (${max_loss})")
 
-
+#print results to new text file in Analysis folder
 with open("Analysis/budget_analysis.txt", 'w') as af:
 
     print("Financial Analysis", file=af)

@@ -28,20 +28,23 @@ with open(election_csv) as election:
         else:
             candidate_votes[candidate] += 1
 
+#Calculate the percentage of vote won for each candidate and the winner
 cand_percentages = {cand: (votes/total_votes)*100 for cand, votes in candidate_votes.items()}
 winner = max(candidate_votes, key=candidate_votes.get)
 
+#print results to terminal window
 print("Election Results")
 print("---------------------")
 print(f'Total Votes: {total_votes}')
 print("---------------------")
 
 for candidate in candidates:
-    print(f'{candidate}: {cand_percentages[candidate]:.2f}% ({candidate_votes[candidate]})')
+    print(f'{candidate}: {cand_percentages[candidate]:.2f}% ({candidate_votes[candidate]})') #.2f% for decimals
 
 print("---------------------")
 print(f'Winner: {winner}')
 
+#print results to new text file in Analysis folder
 with open("Analysis/electiion_results.txt","w") as er:
     print("Election Results", file=er)
     print("---------------------", file=er)
