@@ -29,13 +29,13 @@ with open(budget_csv) as budget_file:
         total_profit += profit
 
         if past_profit != 0: 
-            change = profit - past_profit ## other way around? 
+            change = profit - past_profit 
             delta_lines.append(change)
             monthly_change[month] = change
         past_profit = profit
 avg_change = sum(delta_lines)/len(delta_lines) 
-max_increase = max(delta_lines) ## figure out how to print the months with it
-max_loss = min(delta_lines) ## use different variable name? 
+max_increase = max(delta_lines) 
+max_loss = min(delta_lines) 
 month_max_increase = [key for key, value in monthly_change.items() if value == max_increase][0] #to show just the key in the dictiorary associated with highest value
 month_max_loss = [key for key, value in monthly_change.items() if value == max_loss][0]
 
@@ -44,7 +44,7 @@ print('___________________________________')
 print(f'Total months: {total_months}')
 print(f'total: ${total_profit}')
 print(f"Average Change: ${avg_change:.2f}") ##.2f for decimals
-print(f"Greatest increase in profits: {month_max_increase} (${max_increase})") ## need to add the month 
+print(f"Greatest increase in profits: {month_max_increase} (${max_increase})") 
 print(f"Greatest Decrease in profits: {month_max_loss} (${max_loss})")
 
 
@@ -55,7 +55,7 @@ with open("Analysis/budget_analysis.txt", 'w') as af:
     print(f'Total months: {total_months}', file=af)
     print(f'total: ${total_profit}', file=af)
     print(f"Average Change: ${avg_change:.2f}", file=af) ##.2f for decimals
-    print(f"Greatest increase in profits: {month_max_increase} (${max_increase})", file=af) ## need to add the month 
+    print(f"Greatest increase in profits: {month_max_increase} (${max_increase})", file=af) 
     print(f"Greatest Decrease in profits: {month_max_loss} (${max_loss})", file=af)
 
 
